@@ -1,0 +1,402 @@
+import random
+
+campeoes = [
+    {'nome': 'Aatrox', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Camille', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Darius', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Fiora', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Gangplank', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Garen', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'lutador'},
+    {'nome': 'Gnar', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Gwen', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Illaoi', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Irelia', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Jax', 'lane': 'top', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'duelista'},
+    {'nome': 'Jayce', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Kayle', 'lane': 'top', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Kennen', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Kled', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Malphite', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'Maokai', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'Mordekaiser', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Nasus', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'lutador'},
+    {'nome': 'Olaf', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Ornn', 'lane': 'top', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Pantheon', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Poppy', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Quinn', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Renekton', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Riven', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Rumble', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Sett', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Shen', 'lane': 'top', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Singed', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'tanque'},
+    {'nome': 'Sion', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Teemo', 'lane': 'top', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'atirador'},
+    {'nome': 'Tryndamere', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'duelista'},
+    {'nome': 'Urgot', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Volibear', 'lane': 'top', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Yorick', 'lane': 'top', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+
+    {'nome': 'Amumu', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'BelVeth', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'duelista'},
+    {'nome': 'Brand', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Briar', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Diana', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'assassino'},
+    {'nome': 'Ekko', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Elise', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Evelynn', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Fiddlesticks', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Gragas', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Graves', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Hecarim', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Ivern', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'suporte'},
+    {'nome': 'Jarvan IV', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Karthus', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Kayn', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'KhaZix', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Kindred', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Lee Sin', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Lillia', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Master Yi', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'assassino'},
+    {'nome': 'Nidalee', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Nocturne', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'assassino'},
+    {'nome': 'Nunu & Willump', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'Poppy', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Rammus', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'RekSai', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Rengar', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Sejuani', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Shaco', 'lane': 'jg', 'tipo_dano': 'hibrido',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Shyvana', 'lane': 'jg', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Skarner', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Taliyah', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Udyr', 'lane': 'jg', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Vi', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Viego', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Warwick', 'lane': 'jg', 'tipo_dano': 'hibrido',
+        'dificuldade': 'facil', 'estilo': 'lutador'},
+    {'nome': 'Wukong', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'lutador'},
+    {'nome': 'Xin Zhao', 'lane': 'jg', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'lutador'},
+    {'nome': 'Zac', 'lane': 'jg', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+
+    {'nome': 'Ahri', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Akali', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Akshan', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Anivia', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Annie', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'mago'},
+    {'nome': 'Aurelion Sol', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Azir', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Cassiopeia', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Corki', 'lane': 'mid', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Ekko', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Fizz', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Galio', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Hwei', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Irelia', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Kassadin', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'assassino'},
+    {'nome': 'Katarina', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'LeBlanc', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Lissandra', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Lux', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'mago'},
+    {'nome': 'Malzahar', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'mago'},
+    {'nome': 'Neeko', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Orianna', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Qiyana', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Ryze', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Sylas', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'lutador'},
+    {'nome': 'Syndra', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Talon', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'assassino'},
+    {'nome': 'Twisted Fate', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Veigar', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Vex', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Viktor', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+    {'nome': 'Vladimir', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Xerath', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Yasuo', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Yone', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Zed', 'lane': 'mid', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Ziggs', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+    {'nome': 'Zoe', 'lane': 'mid', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'mago'},
+
+    {'nome': 'Aphelios', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Ashe', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'atirador'},
+    {'nome': 'Caitlyn', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Draven', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Ezreal', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Jhin', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Jinx', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'KaiSa', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Kalista', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'KogMaw', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Lucian', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Miss Fortune', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'atirador'},
+    {'nome': 'Nilah', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'duelista'},
+    {'nome': 'Samira', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Senna', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Sivir', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'facil', 'estilo': 'atirador'},
+    {'nome': 'Smolder', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'facil', 'estilo': 'atirador'},
+    {'nome': 'Tristana', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Twitch', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Varus', 'lane': 'adc', 'tipo_dano': 'hibrido',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Vayne', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+    {'nome': 'Xayah', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'medio', 'estilo': 'atirador'},
+    {'nome': 'Zeri', 'lane': 'adc', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'atirador'},
+
+    {'nome': 'Alistar', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Bard', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'suporte'},
+    {'nome': 'Blitzcrank', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'suporte'},
+    {'nome': 'Braum', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Janna', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'encantador'},
+    {'nome': 'Karma', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'encantador'},
+    {'nome': 'Leona', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'tanque'},
+    {'nome': 'Lulu', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'encantador'},
+    {'nome': 'Milio', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'encantador'},
+    {'nome': 'Morgana', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'suporte'},
+    {'nome': 'Nami', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'encantador'},
+    {'nome': 'Nautilus', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Pyke', 'lane': 'sup', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'assassino'},
+    {'nome': 'Rakan', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'suporte'},
+    {'nome': 'Rell', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'tanque'},
+    {'nome': 'Renata Glasc', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'encantador'},
+    {'nome': 'Sona', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'encantador'},
+    {'nome': 'Soraka', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'encantador'},
+    {'nome': 'Tahm Kench', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'tanque'},
+    {'nome': 'Taric', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'suporte'},
+    {'nome': 'Thresh', 'lane': 'sup', 'tipo_dano': 'ad',
+        'dificuldade': 'dificil', 'estilo': 'suporte'},
+    {'nome': 'Yuumi', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'facil', 'estilo': 'encantador'},
+    {'nome': 'Zilean', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'dificil', 'estilo': 'suporte'},
+    {'nome': 'Zyra', 'lane': 'sup', 'tipo_dano': 'ap',
+        'dificuldade': 'medio', 'estilo': 'mago'},
+]
+
+
+class SistemaRecomendacaoLol:
+    def __init__(self, base_de_campeoes):
+        self.base_de_campeoes = base_de_campeoes
+
+    def recomendar_composicao(self, preferencias):
+        composicao_time = {}
+        lanes = ["top", "jg", "mid", "adc", "sup"]
+
+        campeoes_disponiveis = list(self.base_de_campeoes)
+        if 'estilo_preferido' in preferencias:
+            campeoes_disponiveis = [
+                c for c in campeoes_disponiveis if c['estilo'] == preferencias['estilo_preferido']]
+
+        if 'dano_preferido' in preferencias:
+            campeoes_disponiveis = [
+                c for c in campeoes_disponiveis if c['tipo_dano'] == preferencias['dano_preferido']]
+
+        for lane in lanes:
+            candidatos_lane = [
+                c for c in self.base_de_campeoes if c['lane'] == lane]
+
+            candidatos_preferenciais = [
+                c for c in candidatos_lane if c in campeoes_disponiveis]
+
+            if candidatos_preferenciais:
+                escolha = random.choice(candidatos_preferenciais)
+            else:
+                if not candidatos_lane:
+                    composicao_time[lane.upper(
+                    )] = "Nenhum campeão encontrado para esta lane."
+                    continue
+                escolha = random.choice(candidatos_lane)
+
+            composicao_time[lane.upper(
+            )] = f"{escolha['nome']} ({escolha['estilo'].capitalize()}, Dano {escolha['tipo_dano'].upper()})"
+
+        return composicao_time
+
+
+def interface_lol():
+    print("--- Sistema Especialista de Composição de Time para LoL ---")
+    preferencias = {}
+
+    estilos_validos = ['lutador', 'mago', 'atirador', 'tanque',
+                       'assassino', 'duelista', 'encantador', 'suporte']
+    estilo_input = input(
+        f"Você tem um estilo de campeão preferido? ({', '.join(estilos_validos)}) "
+        "(deixe em branco para todos): "
+    ).lower().strip()
+    if estilo_input in estilos_validos:
+        preferencias['estilo_preferido'] = estilo_input
+
+    dano_validos = ['ad', 'ap', 'hibrido']
+    dano_input = input(
+        f"Prefere qual tipo de dano (ad, ap, hibrido)? "
+        "(deixe em branco para todos): "
+    ).lower().strip()
+    if dano_input in dano_validos:
+        preferencias['dano_preferido'] = dano_input
+
+    sistema = SistemaRecomendacaoLol(campeoes)
+    composicao = sistema.recomendar_composicao(preferencias)
+
+    print("\n--- Sua Composição de Time Sugerida ---")
+    for lane, campeao in composicao.items():
+        print(f"{lane}: {campeao}")
+
+
+if __name__ == "__main__":
+    interface_lol()
